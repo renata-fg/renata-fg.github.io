@@ -1,0 +1,28 @@
+/* Versão Bootstrap */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
