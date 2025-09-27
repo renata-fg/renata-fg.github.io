@@ -1,28 +1,29 @@
-/* Versão Bootstrap */
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+    background: #f0f4fa;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #6fa8dc 0%, #2980b9 100%);
 }
 
-.header {
-    background-color: #f8f9fa;
-    padding: 10px;
-    text-align: center;
+.card {
+    border: none;
 }
 
-.footer {
-    background-color: #f8f9fa;
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.btn-success {
+    background-color: #27ae60;
+    border: none;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: #219150;
+}
+
+footer {
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
