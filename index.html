@@ -2,125 +2,101 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Exemplo</title>
+    <title>Dashboard Modular</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
+    
+    <!-- Dependências Externas (CSS) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    
+    <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="bg-dark text-white p-3 vh-100">
-            <div class="sidebar-header mb-4 d-flex align-items-center gap-2">
-                <i class="bi bi-gear-fill fs-4"></i>
-                <span class="fs-4 fw-bold">Easion</span>
-            </div>
-            <ul class="nav flex-column gap-2">
-                <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-house-door me-2"></i>Dashboard</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-bar-chart me-2"></i>Charts</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-box me-2"></i>Components</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-files me-2"></i>Layouts</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-info-circle me-2"></i>About</a></li>
-            </ul>
-        </nav>
-        <!-- /Sidebar -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper" class="w-100">
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 shadow-sm">
-                <span class="navbar-brand mb-0 h4"><i class="bi bi-list me-2"></i></span>
-                <form class="d-flex flex-grow-1 mx-3">
-                    <input class="form-control me-2" type="search" placeholder="type to search" aria-label="Search">
-                </form>
-                <ul class="navbar-nav ms-auto align-items-center gap-3">
-                    <li class="nav-item"><i class="bi bi-github fs-5"></i></li>
-                    <li class="nav-item position-relative">
-                        <i class="bi bi-bell fs-5"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">4</span>
-                    </li>
-                    <li class="nav-item"><i class="bi bi-person fs-5"></i></li>
-                </ul>
-            </nav>
-            <!-- /Topbar -->
-
-            <div class="container-fluid mt-4">
-                <div class="row g-4">
-                    <!-- Cards -->
-                    <div class="col-md-4">
-                        <div class="card text-white bg-primary mb-3 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Sign ups</h5>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="fs-3"><i class="bi bi-person"></i></span>
-                                    <span class="fs-2 fw-bold">114</span>
+    <!-- A estrutura principal é simples e os componentes são carregados via JS -->
+    <div id="app-wrapper">
+        <header id="navbar-container"></header>
+        
+        <div id="main-content">
+            <aside id="sidebar-container"></aside>
+            <main id="page-content-wrapper">
+                <div class="container-fluid">
+                    <!-- Conteúdo principal da página (cards, gráficos, etc.) -->
+                    <div class="row g-4">
+                        <!-- Cards -->
+                        <div class="col-md-4">
+                            <div class="card text-white bg-primary mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sign ups</h5>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="fs-3"><i class="bi bi-person"></i></span>
+                                        <span class="fs-2 fw-bold">114</span>
+                                    </div>
+                                    <small class="d-block mt-2">+25% from last month</small>
                                 </div>
-                                <small class="d-block mt-2">+25% from last month</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-white bg-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Revenue</h5>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="fs-3"><i class="bi bi-cart"></i></span>
+                                        <span class="fs-2 fw-bold">$25,541</span>
+                                    </div>
+                                    <small class="d-block mt-2">+17.5% from last month</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-white bg-danger mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Open tickets</h5>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="fs-3"><i class="bi bi-telephone"></i></span>
+                                        <span class="fs-2 fw-bold">5</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card text-white bg-success mb-3 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Revenue</h5>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="fs-3"><i class="bi bi-cart"></i></span>
-                                    <span class="fs-2 fw-bold">$25,541</span>
+                    <!-- Gráficos e Notificações -->
+                    <div class="row mt-3 g-4">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header fw-bold"><i class="bi bi-bar-chart me-2"></i>Bar Chart</div>
+                                <div class="card-body">
+                                    <canvas id="barChart"></canvas>
                                 </div>
-                                <small class="d-block mt-2">+17.5% from last month</small>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card text-white bg-danger mb-3 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Open tickets</h5>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="fs-3"><i class="bi bi-telephone"></i></span>
-                                    <span class="fs-2 fw-bold">5</span>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header fw-bold"><i class="bi bi-bell me-2"></i>Notifications</div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
+                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
+                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
+                                    </ul>
+                                    <a href="#" class="text-decoration-none">Show all</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Charts and Notifications -->
-                <div class="row mt-3 g-4">
-                    <div class="col-md-8">
-                        <div class="card shadow-sm">
-                            <div class="card-header fw-bold"><i class="bi bi-bar-chart me-2"></i>Bar Chart</div>
-                            <div class="card-body">
-                                <canvas id="barChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm">
-                            <div class="card-header fw-bold"><i class="bi bi-bell me-2"></i>Notifications</div>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
-                                    <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
-                                    <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
-                                </ul>
-                                <a href="#" class="text-decoration-none">Show all</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Charts and Notifications -->
-            </div>
+            </main>
         </div>
-        <!-- /Page Content -->
     </div>
-    <!-- Bootstrap JS -->
+
+    <!-- Dependências Externas (JS) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+    
+    <!-- Scripts da Aplicação (caminhos corrigidos para a pasta 'componentes') -->
+    <script src="componentes/sidebar.js"></script>
+    <script src="componentes/navbar.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
+

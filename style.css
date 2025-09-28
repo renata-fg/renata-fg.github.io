@@ -1,31 +1,92 @@
+/* * CLEAN CODE: Uso de variáveis CSS para um tema consistente e de fácil manutenção.
+ * Permite alterar cores, fontes e espaçamentos num único local.
+*/
+:root {
+    --background-color: #f3f6fb;
+    --sidebar-background: #232a34;
+    --sidebar-width: 250px;
+    --text-color-light: #ffffff;
+    --text-color-dark: #333;
+    --card-border-radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --transition-speed: 0.3s;
+}
+
 body {
-    background: #f3f6fb;
+    background-color: var(--background-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Previne scroll horizontal ao ocultar a sidebar */
 }
-#wrapper {
+
+/* Layout Principal */
+#app-wrapper {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
-#sidebar {
-    width: 250px;
-    min-width: 250px;
-    background: #232a34;
+
+#main-content {
+    display: flex;
+    flex: 1;
 }
+
+/* Barra Lateral */
+#sidebar-container {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    background-color: var(--sidebar-background);
+    color: var(--text-color-light);
+    transition: margin-left var(--transition-speed);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+/* * CLEAN CODE: Um único estado na classe pai (.sidebar-collapsed) controla
+ * a visibilidade da barra lateral, simplificando tanto o CSS quanto o JavaScript.
+*/
+#app-wrapper.sidebar-collapsed #sidebar-container {
+    margin-left: calc(-1 * var(--sidebar-width));
+}
+
+.sidebar-nav .nav-link {
+    color: var(--text-color-light);
+    transition: background-color 0.2s;
+}
+
+.sidebar-nav .nav-link:hover {
+    background-color: #343a40;
+}
+
+/* Conteúdo da Página */
 #page-content-wrapper {
-    background: #f3f6fb;
-    min-height: 100vh;
+    flex: 1;
+    padding: 1.5rem;
+    transition: margin-left var(--transition-speed);
 }
-.nav-link.active, .nav-link:hover {
-    background: #222a33;
-    color: #fff !important;
+
+/* Barra de Navegação Superior */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 1020; /* Garante que a navbar fique acima de outros elementos */
 }
+
+.navbar-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    background: var(--background-color);
+}
+
+/* Cards */
 .card {
     border: none;
-    border-radius: 12px;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-sm);
 }
+
 .card-header {
-    background: #f7f7f7;
+    background-color: #f7f7f7;
     border-bottom: 1px solid #eaeaea;
-    border-radius: 12px 12px 0 0;
-}
-.shadow-sm {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
 }

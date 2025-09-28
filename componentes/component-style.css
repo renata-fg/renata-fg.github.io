@@ -1,0 +1,75 @@
+/* Arquivo CSS: navbar.css */
+/* Estilos gerais da barra de navegação */
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-light);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Container do título e do botão de alternância */
+.navbar-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botão da barra lateral */
+.btn-sidebar-toggle {
+    margin-right: 0.75rem;
+}
+
+/* Título principal */
+.navbar-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    background: var(--bg-custom-navbar);
+    margin: 0 auto;
+}
+
+/* Lista de ações (ícones) */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+}
+
+.action-item > i {
+    font-size: 1.25rem;
+}
+
+/* Itens de notificação (badge) */
+.notification-item {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background-color: var(--danger);
+    color: white;
+    font-size: 0.75em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50rem;
+    font-weight: bold;
+}
+
+/* Variáveis CSS para reutilização e clareza */
+:root {
+    --bg-light: #f8f9fa;
+    --bg-custom-navbar: #f3f6fb;
+    --text-dark: #212529;
+    --danger: #dc3545;
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
