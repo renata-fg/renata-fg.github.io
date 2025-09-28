@@ -7,8 +7,8 @@
 // 1. DADOS: Define as páginas da aplicação. A página de Agências foi trocada pela de Obras de Arte.
 const pages = [
     { name: 'Dashboard', iconClass: 'bi-house-door', path: 'index.html' },
-    // { name: 'Personagens', iconClass: 'bi-magic', path: 'paginas/personagens/personagens.html' },
-    { name: 'Obras de Arte', iconClass: 'bi-palette', path: 'paginas/arte/arte.html' },
+    { name: 'Personagens', iconClass: 'bi-magic', path: 'paginas/personagens/personagens.html' },
+    // { name: 'Obras de Arte', iconClass: 'bi-palette', path: 'paginas/arte/arte.html' },
 ];
 
 /**
