@@ -7,7 +7,8 @@
 // 1. DADOS: Define as páginas da aplicação. A página de Agências foi trocada pela de Obras de Arte.
 const pages = [
     { name: 'Dashboard', iconClass: 'bi-house-door', path: 'index.html' },
-    { name: 'Personagens', iconClass: 'bi-magic', path: 'paginas/personagens/personagens.html' },
+    // { name: 'Personagens', iconClass: 'bi-magic', path: 'paginas/personagens/personagens.html' },
+    { name: 'Cocktails', iconClass: 'bi-cup-straw', path: 'paginas/cocktails/cocktails.html' }, // NOVO LINK
     // { name: 'Obras de Arte', iconClass: 'bi-palette', path: 'paginas/arte/arte.html' },
 ];
 
@@ -67,4 +68,3 @@ function renderSidebar() {
         sidebarContainer.innerHTML = sidebarTemplate;
     }
 }
-

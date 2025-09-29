@@ -2,9 +2,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Modular</title>
+    <title>Dashboard Cocktails</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <!-- Paste this right before your closing </head> tag -->
+    <script type="text/javascript">
+        (function (f, b) { if (!b.__SV) { var e, g, i, h; window.mixpanel = b; b._i = []; b.init = function (e, f, c) { function g(a, d) { var b = d.split("."); 2 == b.length && ((a = a[b[0]]), (d = b[1])); a[d] = function () { a.push([d].concat(Array.prototype.slice.call(arguments, 0))); }; } var a = b; "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel"); a.people = a.people || []; a.toString = function (a) { var d = "mixpanel"; "mixpanel" !== c && (d += "." + c); a || (d += " (stub)"); return d; }; a.people.toString = function () { return a.toString(1) + ".people (stub)"; }; i = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split( " "); for (h = 0; h < i.length; h++) g(a, i[h]); var j = "set set_once union unset remove delete".split(" "); a.get_group = function () { function b(c) { d[c] = function () { call2_args = arguments; call2 = [c].concat(Array.prototype.slice.call(call2_args, 0)); a.push([e, call2]); }; } for ( var d = {}, e = ["get_group"].concat( Array.prototype.slice.call(arguments, 0)), c = 0; c < j.length; c++) b(j[c]); return d; }; b._i.push([e, f, c]); }; b.__SV = 1.2; e = f.createElement("script"); e.type = "text/javascript"; e.async = !0; e.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === f.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; g = f.getElementsByTagName("script")[0]; g.parentNode.insertBefore(e, g); } })(document, window.mixpanel || []);
+    </script>
     <!-- Dependências Externas (CSS) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -21,65 +24,82 @@
             <aside id="sidebar-container"></aside>
             <main id="page-content-wrapper">
                 <div class="container-fluid">
-                    <!-- Conteúdo principal da página (cards, gráficos, etc.) -->
-                    <div class="row g-4">
-                        <!-- Cards -->
+                    <h1 class="mb-4">Dashboard de Receitas de Cocktails</h1>
+
+                    <!-- LINHA 1: Métricas Chave (Top 3 Cards) -->
+                    <div class="row g-4 mb-5">
+                        <!-- Card 1: Categorias Totais -->
                         <div class="col-md-4">
-                            <div class="card text-white bg-primary mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Sign ups</h5>
+                            <div class="card text-white bg-danger mb-3 shadow-sm" style="border-radius: 12px;"> 
+                                <div class="card-body p-4">
+                                    <h6 class="card-title text-uppercase opacity-75">Categorias</h6>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="fs-3"><i class="bi bi-person"></i></span>
-                                        <span class="fs-2 fw-bold">114</span>
+                                        <span class="fs-3"><i class="bi bi-list-stars"></i></span>
+                                        <span id="metric-total-categories" class="fs-2 fw-bold">...</span>
                                     </div>
-                                    <small class="d-block mt-2">+25% from last month</small>
                                 </div>
                             </div>
                         </div>
+                        <!-- Card 2: Ingredientes Totais -->
                         <div class="col-md-4">
-                            <div class="card text-white bg-success mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Revenue</h5>
+                            <div class="card text-white bg-success mb-3 shadow-sm" style="border-radius: 12px;">
+                                <div class="card-body p-4">
+                                    <h6 class="card-title text-uppercase opacity-75">Ingredientes</h6>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="fs-3"><i class="bi bi-cart"></i></span>
-                                        <span class="fs-2 fw-bold">$25,541</span>
+                                        <span class="fs-3"><i class="bi bi-lemon"></i></span>
+                                        <span id="metric-total-ingredients" class="fs-2 fw-bold">...</span>
                                     </div>
-                                    <small class="d-block mt-2">+17.5% from last month</small>
                                 </div>
                             </div>
                         </div>
+                        <!-- Card 3: Tipos de Copos Totais -->
                         <div class="col-md-4">
-                            <div class="card text-white bg-danger mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Open tickets</h5>
+                            <div class="card text-white bg-primary mb-3 shadow-sm" style="border-radius: 12px;">
+                                <div class="card-body p-4">
+                                    <h6 class="card-title text-uppercase opacity-75">Tipos de Copos</h6>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="fs-3"><i class="bi bi-telephone"></i></span>
-                                        <span class="fs-2 fw-bold">5</span>
+                                        <span class="fs-3"><i class="bi bi-cup-straw"></i></span>
+                                        <span id="metric-total-glasses" class="fs-2 fw-bold">...</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Gráficos e Notificações -->
-                    <div class="row mt-3 g-4">
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-header fw-bold"><i class="bi bi-bar-chart me-2"></i>Bar Chart</div>
-                                <div class="card-body">
+                    
+                    <!-- LINHA 2: Gráficos de Tendência e Distribuição (Agora Coluna Única de 12) -->
+                    <div class="row g-4 mb-4">
+                        
+                        <!-- Coluna Única (Principal): Gráficos de Tendência e Distribuição -->
+                        <div class="col-lg-12">
+                            <!-- Gráfico de Linha: Tendência de Cocktails por Letra -->
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-header fw-bold"><i class="bi bi-graph-up me-2"></i>Distribuição Alfabética de Receitas</div>
+                                <div class="card-body" style="height: 350px;">
+                                    <canvas id="lineChart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <!-- Gráfico de Barras: Distribuição por Categoria -->
+                            <div class="card shadow-sm">
+                                <div class="card-header fw-bold"><i class="bi bi-bar-chart-fill me-2"></i>Top Categorias de Cocktails</div>
+                                <div class="card-body" style="height: 350px;">
                                     <canvas id="barChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                    </div>
+
+                    <!-- LINHA 3: Atividade Recente (Mantido para simular o painel inferior) -->
+                    <div class="row mt-4 g-4 d-none">
+                        <div class="col-12">
                             <div class="card">
-                                <div class="card-header fw-bold"><i class="bi bi-bell me-2"></i>Notifications</div>
+                                <div class="card-header fw-bold"><i class="bi bi-activity me-2"></i>Atividade Recente</div>
                                 <div class="card-body">
-                                    <ul class="list-unstyled">
-                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
-                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
-                                        <li><i class="bi bi-chat-left-text me-2"></i>New comment <span class="text-muted float-end">21 days ago</span></li>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><i class="bi bi-chat-left-text me-2 text-primary"></i>Novo cocktail sugerido <span class="text-muted float-end">3 dias atrás</span></li>
+                                        <li><i class="bi bi-chat-left-text me-2 text-success"></i>Comentário em "Mojito" <span class="text-muted float-end">5 horas atrás</span></li>
+                                        <li><i class="bi bi-plus-circle me-2 text-warning"></i>Nova categoria adicionada <span class="text-muted float-end">1 semana atrás</span></li>
                                     </ul>
-                                    <a href="#" class="text-decoration-none">Show all</a>
                                 </div>
                             </div>
                         </div>
@@ -92,6 +112,9 @@
     <!-- Dependências Externas (JS) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Mixpanel -->
+    <script src="https://cdn.jsdelivr.net/npm/mixpanel-browser@2.45.0/dist/mixpanel-latest.min.js"></script>
     
     <!-- Scripts da Aplicação (caminhos corrigidos para a pasta 'componentes') -->
     <script src="componentes/sidebar.js"></script>
@@ -99,4 +122,3 @@
     <script src="main.js"></script>
 </body>
 </html>
-

@@ -20,10 +20,21 @@
             <aside id="sidebar-container"></aside>
             <main id="page-content-wrapper">
                 <div class="container-fluid">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
                         <h1 class="h3 m-0">Personagens da Disney</h1>
-                        <div class="col-12 col-md-4">
-                            <input type="text" id="search-input" class="form-control" placeholder="Procurar por nome...">
+                        
+                        <!-- Controlo de Filtros -->
+                        <div class="d-flex gap-3 w-100 w-md-auto justify-content-end">
+                            
+                            <!-- Novo Botão para Abrir o Drawer de Filtros -->
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filtersOffcanvas" aria-controls="filtersOffcanvas">
+                                <i class="bi bi-funnel me-2"></i> Filtros Avançados
+                            </button>
+
+                            <!-- Caixa de Pesquisa existente (Pesquisa por Nome) -->
+                            <div class="col-md-auto">
+                                <input type="text" id="search-input" class="form-control" placeholder="Procurar por nome...">
+                            </div>
                         </div>
                     </div>
                     
@@ -55,6 +66,64 @@
             </main>
         </div>
     </div>
+
+    <!-- ESTRUTURA DO OFFCAVSAS (DRAWER) PARA FILTROS AVANÇADOS -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="filtersOffcanvas" aria-labelledby="filtersOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="filtersOffcanvasLabel">Filtros Avançados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column gap-4">
+        
+        <!-- Filtro: Filmes (Populado por JS) -->
+        <div>
+            <label for="film-filter-select" class="form-label fw-bold">Filtrar por Filme</label>
+            <select id="film-filter-select" class="form-select">
+                <option value="">Todos os Filmes</option>
+                <!-- Opções de filme serão adicionadas via JS -->
+            </select>
+        </div>
+
+        <!-- Novo Filtro: Programas de TV (Populado por JS) -->
+        <div>
+            <label for="tvshow-filter-select" class="form-label fw-bold">Filtrar por Programa de TV</label>
+            <select id="tvshow-filter-select" class="form-select">
+                <option value="">Todos os Programas de TV</option>
+                <!-- Opções de programa de TV serão adicionadas via JS -->
+            </select>
+        </div>
+        
+        <!-- Novo Filtro: Jogos (Populado por JS) -->
+        <div>
+            <label for="videogame-filter-select" class="form-label fw-bold">Filtrar por Videojogo</label>
+            <select id="videogame-filter-select" class="form-select">
+                <option value="">Todos os Jogos</option>
+                <!-- Opções de videojogo serão adicionadas via JS -->
+            </select>
+        </div>
+
+        <!-- Novo Filtro: Inimigos (Populado por JS - Opção de pesquisa, não é um filtro nativo da API) -->
+        <!-- NOTA: O filtro "Inimigos" não pode ser implementado como um filtro direto na API,
+             mas adicionamos o campo para futura expansão ou filtragem local. 
+             Por agora, manteremos a filtragem pela API nos campos suportados (Filmes, TV Shows, Video Games). -->
+        <div>
+            <label for="enemy-filter-select" class="form-label fw-bold">Filtrar por Inimigo</label>
+            <select id="enemy-filter-select" class="form-select" disabled>
+                <option value="">Filtragem Local (Indisponível)</option>
+            </select>
+            <small class="text-muted">Esta filtragem requer a listagem de todos os personagens e não é suportada diretamente pela API.</small>
+        </div>
+
+        <div class="mt-auto pt-3 border-top">
+            <button class="btn btn-primary w-100" data-bs-dismiss="offcanvas" onclick="document.dispatchEvent(new Event('filterApplied'));">
+                Aplicar Filtros
+            </button>
+        </div>
+
+      </div>
+    </div>
+    <!-- FIM DA ESTRUTURA DO OFFCAVSAS -->
+
 
     <!-- Estrutura da Modal (oculta por defeito) -->
     <div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="characterModalLabel" aria-hidden="true">
@@ -91,4 +160,3 @@
     <script src="../../main.js"></script>
 </body>
 </html>
-

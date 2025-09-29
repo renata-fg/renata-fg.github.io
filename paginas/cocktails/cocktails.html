@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Cocktails</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Dependências Externas (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div id="app-wrapper">
+        <header id="navbar-container"></header>
+        
+        <div id="main-content">
+            <aside id="sidebar-container"></aside>
+            <main id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h1 class="h3 m-0">Busca de Cocktails (TheCocktailDB API)</h1>
+                        <div class="d-flex gap-2">
+                            <!-- Botão para abrir o Drawer de Filtros -->
+                            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas">
+                                <i class="bi bi-funnel me-2"></i> Filtros Avançados
+                            </button>
+                            <input type="text" id="search-input" class="form-control" placeholder="Procure cocktails por nome...">
+                        </div>
+                    </div>
+                    
+                    <div id="loading-indicator" class="text-center mb-4 d-none">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">A carregar...</span>
+                        </div>
+                    </div>
+
+                    <!-- Container onde os resultados serão injetados (tabela) -->
+                    <div id="cocktails-results-container" class="row g-4">
+                        <!-- Conteúdo injetado pelo JS -->
+                    </div>
+
+                    <!-- Container da Paginação -->
+                    <nav id="pagination-container" class="d-flex justify-content-center mt-4"></nav>
+                    
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Estrutura da Offcanvas (Drawer de Filtros) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="filterOffcanvasLabel">Filtros Avançados</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p class="text-muted small">Escolha um filtro. A pesquisa por nome será ignorada se um filtro avançado estiver ativo.</p>
+
+            <div class="mb-3">
+                <label for="category-filter" class="form-label fw-bold"><i class="bi bi-list-stars me-1"></i> Categoria</label>
+                <!-- O campo será populado pelo JS -->
+                <select id="category-filter" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+                <label for="glass-filter" class="form-label fw-bold"><i class="bi bi-glass-half me-1"></i> Tipo de Copo</label>
+                <!-- O campo será populado pelo JS -->
+                <select id="glass-filter" class="form-select"></select>
+            </div>
+
+            <div class="mb-3">
+                <label for="ingredient-filter" class="form-label fw-bold"><i class="bi bi-lemon me-1"></i> Ingrediente Principal</label>
+                <!-- O campo será populado pelo JS -->
+                <select id="ingredient-filter" class="form-select"></select>
+            </div>
+
+            <div class="d-grid mt-4">
+                <button id="clear-filters-btn" class="btn btn-outline-danger">
+                    <i class="bi bi-x-circle me-1"></i> Limpar Filtros
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dependências Externas (JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts dos Componentes -->
+    <script src="../../componentes/sidebar.js"></script>
+    <script src="../../componentes/navbar.js"></script>
+    
+    <!-- Scripts da Página e Aplicação -->
+    <script src="./cocktails.js"></script>
+    <script src="../../main.js"></script>
+</body>
+</html>
