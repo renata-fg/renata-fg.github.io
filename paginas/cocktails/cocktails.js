@@ -504,13 +504,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function updateUser(){ 
-    let novo = false;
-    if (!localStorage.getItem('username')) {
-        localStorage.setItem('user_id', uuidv4());
-        novo = true;
+    if (!localStorage.getItem('user_id')) {
+    // Se NÃO EXISTE (primeira visita), então cria e salva
+    localStorage.setItem('user_id', uuidv4());
+    localStorage.setItem('novo', 'true'); // Opcional: para rastrear se é a primeira vez
+    } else {
+        localStorage.setItem('novo', 'false');
     }
+    mixpanel.identify(localStorage.getItem('user_id'));
     mixpanel.people.set({
-        user_id: localStorage.getItem('user_id'),
-        novo: novo
+        novo: localStorage.getItem('novo')
     });
 }
