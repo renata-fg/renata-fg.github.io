@@ -220,7 +220,7 @@ class Dashboard {
 document.addEventListener('DOMContentLoaded', () => {
     const dashboard = new Dashboard();
     dashboard.init();
-    
+    updateUser();
 });
 
 function updateUser(){ 
