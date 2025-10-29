@@ -499,4 +499,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Busca a lista inicial de cocktails (cocktails que começam por 'a')
     fetchAndSetupCocktails('a'); 
     setupMixpanel();
+    updateUser();
 });
+
+
+function updateUser(){ 
+    let novo = false;
+    if (!localStorage.getItem('username')) {
+        localStorage.setItem('user_id', uuidv4());
+        novo = true;
+    }
+    mixpanel.people.set({
+        user_id: localStorage.getItem('user_id'),
+        novo: novo
+    });
+}
