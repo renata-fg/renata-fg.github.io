@@ -231,9 +231,11 @@ function updateUser(){
     } else {
         localStorage.setItem('novo', 'false');
     }
-    mixpanel.identify(localStorage.getItem('user_id'));
+    const userId = localStorage.getItem('user_id');
+    mixpanel.identify(userId);
     mixpanel.people.set({
-        novo: localStorage.getItem('novo')
+        novo: localStorage.getItem('novo'),
+        perfil_do_usuário: userId
     });
 }
 

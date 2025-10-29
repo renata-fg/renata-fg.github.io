@@ -341,7 +341,7 @@ function createModalStructure() {
 }
 
 function showCocktailDetails(cocktailId) {
-    mixpanel.track("ver_detalhes");
+    mixpanel.track("ver_detalhes", { "idObjeto": cocktailId });
     const cocktail = allCocktails.find(c => c.idDrink === cocktailId);
     if (!cocktail || !cocktailModalInstance) return;
 
@@ -408,12 +408,15 @@ function handleAdvancedFilterChange() {
     // Quando um filtro muda, garante que os outros filtros avançados sejam limpos
     // (a API só suporta 1 filtro por vez no endpoint /filter.php?)
     if (categoryFilter.value) {
+        mixpanel.track("selecao_categoria");
         glassFilter.value = '';
         ingredientFilter.value = '';
     } else if (glassFilter.value) {
+        mixpanel.track("selecao_tipo_copo");
         categoryFilter.value = '';
         ingredientFilter.value = '';
     } else if (ingredientFilter.value) {
+        mixpanel.track("selecao_ingrediente");
         categoryFilter.value = '';
         glassFilter.value = '';
     }
@@ -440,6 +443,7 @@ function clearAdvancedFilters() {
     ingredientFilter.value = '';
     searchInput.value = '';
     fetchAndSetupCocktails('a');
+    mixpanel.track("botao_limpar");
 }
 
 function setupMixpanel() {
