@@ -341,6 +341,7 @@ function createModalStructure() {
 }
 
 function showCocktailDetails(cocktailId) {
+    mixpanel.track("ver_detalhes");
     const cocktail = allCocktails.find(c => c.idDrink === cocktailId);
     if (!cocktail || !cocktailModalInstance) return;
 
