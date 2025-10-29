@@ -188,13 +188,14 @@ class Dashboard {
      */
     setupMixpanel() {
         if (typeof mixpanel !== 'undefined') {
-            mixpanel.init("6cc20ed9d484aca9bf0901c00ac27498", {
+            mixpanel.init("ea61f6dc11ecdf26335809ad4e452a22", {
                 debug: true,
                 track_pageview: true,
                 persistence: "localStorage",
                 record_sessions_percent: 1,
                 record_heatmap_data: true,
             });
+            console.log("Mixpanel inicializado");
         } else {
             console.warn("Mixpanel não foi inicializado: O script da biblioteca não foi carregado.");
         }
@@ -221,3 +222,21 @@ document.addEventListener('DOMContentLoaded', () => {
     dashboard.init();
     
 });
+
+function updateUser(){ 
+    let novo = false;
+    if (!localStorage.getItem('username')) {
+        localStorage.setItem('user_id', uuidv4());
+        novo = true;
+    }
+    mixpanel.people.set({
+        user_id: localStorage.getItem('user_id'),
+        novo: novo
+    });
+}
+
+function uuidv4() {
+  return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+    (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+  );
+}

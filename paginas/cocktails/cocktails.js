@@ -21,6 +21,7 @@ let allCocktails = [];
 let currentPage = 1;
 const itemsPerPage = 12; // Número de linhas por página
 let cocktailModalInstance = null; 
+let numberOfResults = 0;
 
 let searchTimeout;
 const SEARCH_DEBOUNCE_DELAY = 500; 
@@ -98,7 +99,6 @@ function isAdvancedFilterActive() {
  */
 async function fetchAndSetupCocktails(searchTerm = 'a') {
     loadingIndicator.classList.remove('d-none');
-    
     let url;
     
     // 1. Prioriza a pesquisa por Filtros Avançados
@@ -142,6 +142,7 @@ async function fetchAndSetupCocktails(searchTerm = 'a') {
         }
 
         currentPage = 1; 
+        numberOfResults = data.drinks.length;
         renderResults();
 
     } catch (error) {
@@ -175,13 +176,13 @@ async function fetchFullDetailsForFilteredResults(filteredDrinks) {
         try {
             const response = await fetch(detailUrl);
             const data = await response.json();
+            numberOfResults = data.drinks.length;
             return data.drinks ? data.drinks[0] : null;
         } catch (e) {
             console.warn(`Falha ao buscar detalhes para ID: ${partialDrink.idDrink}`);
             return null; 
         }
     });
-
     const detailedCocktails = (await Promise.all(detailedPromises)).filter(c => c !== null);
     return detailedCocktails;
 }
@@ -379,7 +380,6 @@ function showCocktailDetails(cocktailId) {
     cocktailModalInstance.show();
 }
 
-
 // ----------------------------------------------------
 // Event Listeners e Inicialização
 // ----------------------------------------------------
@@ -395,6 +395,7 @@ function handleSearchInput() {
     searchTimeout = setTimeout(() => {
         const searchTerm = searchInput.value.trim();
         fetchAndSetupCocktails(searchTerm || 'a'); 
+        mixpanel.track("lista_busca_termo", { "termo buscado": searchTerm, "resultados encontrados": numberOfResults });
     }, SEARCH_DEBOUNCE_DELAY);
 }
 
@@ -417,7 +418,16 @@ function handleAdvancedFilterChange() {
     }
     
     // Se o filtro principal estiver vazio, restaura a busca por nome ('a')
-    fetchAndSetupCocktails(isAdvancedFilterActive() ? '' : 'a');
+    fetchAndSetupCocktails(isAdvancedFilterActive() ? '' : 'a')
+        .then(() => {
+            const filterValue = categoryFilter.value || glassFilter.value || ingredientFilter.value;
+            const filterType = categoryFilter.value ? 'Categoria' : glassFilter.value ? 'Copo' : 'Ingrediente';
+            console.log("Busca atualizada após mudança de filtro avançado.");
+            mixpanel.track("lista_busca_filtro", { "filtro aplicado": filterType +": "+filterValue, "resultados encontrados": numberOfResults, "filtros já aplicados": "só funciona um por vez :P" });
+        });
+
+    // mixpanel.track("lista_busca_termo", { "filtro aplicado": , "resultados encontrados": numberOfResults});
+
 }
 
 /**
@@ -429,6 +439,22 @@ function clearAdvancedFilters() {
     ingredientFilter.value = '';
     searchInput.value = '';
     fetchAndSetupCocktails('a');
+}
+
+function setupMixpanel() {
+    if (typeof mixpanel !== 'undefined') {
+        mixpanel.init("ea61f6dc11ecdf26335809ad4e452a22", {
+            debug: true,
+            track_pageview: true,
+            persistence: "localStorage",
+            record_sessions_percent: 1,
+            record_heatmap_data: true,
+        });
+        console.log("Mixpanel inicializado");
+    } else {
+        console.warn("Mixpanel não foi inicializado: O script da biblioteca não foi carregado.");
+    }
+    
 }
 
 // Event Listeners de Filtro Avançado
@@ -472,4 +498,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Busca a lista inicial de cocktails (cocktails que começam por 'a')
     fetchAndSetupCocktails('a'); 
+    setupMixpanel();
 });
