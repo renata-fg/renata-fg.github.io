@@ -17,17 +17,18 @@ class UIManager {
     }
 
     static updateSections(texts) {
-        const aboutTitle = document.getElementById('about-title');
-        const educationTitle = document.getElementById('education-title');
-        const projectsTitle = document.getElementById('projects-title');
-        const coursesTitle = document.getElementById('courses-title');
-        const testimonialsTitle = document.getElementById('testimonials-title');
+        const titles = {
+            'about-title': texts.sections.about,
+            'education-title': texts.sections.education,
+            'projects-title': texts.sections.projects,
+            'courses-title': texts.sections.courses,
+            'testimonials-title': texts.sections.testimonials
+        };
 
-        if (aboutTitle) aboutTitle.textContent = texts.sections.about;
-        if (educationTitle) educationTitle.textContent = texts.sections.education;
-        if (projectsTitle) projectsTitle.textContent = texts.sections.projects;
-        if (coursesTitle) coursesTitle.textContent = texts.sections.courses;
-        if (testimonialsTitle) testimonialsTitle.textContent = texts.sections.testimonials;
+        for (const [id, text] of Object.entries(titles)) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        }
     }
 
     static populateHero(data) {
@@ -43,73 +44,49 @@ class UIManager {
         if (aboutSection) aboutSection.textContent = data.about;
     }
 
-    static createCard(item, type = 'default') {
-        let imageHeight = '160px';
-        if (type === 'projects') {
-            imageHeight = '200px';
-        } else if (type === 'education') {
-            imageHeight = '120px';
-        }
+    /* * Construtor de Cartões Higienizado 
+     * Removido: inline styles, card-overlay, e tags desnecessárias.
+     * Adicionado: loading="lazy" para performance acadêmica.
+     */
+    static createCard(item) {
         return `
-            <div class="card-item">
-                <div class="card">
-                    <div class="card-image" style="height: ${imageHeight};">
-                        <img src="${item.image}" alt="${item.title}">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">${item.title}</h3>
-                        <p class="card-description">${item.description}</p>
-                    </div>
+            <article class="card">
+                <div class="card-image">
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
                 </div>
-            </div>
+                <div class="card-body">
+                    <h3 class="card-title">${item.title}</h3>
+                    <p class="card-text">${item.description}</p>
+                </div>
+            </article>
         `;
     }
 
-    static getCategoryFromIcon(icon) {
-        const categories = {
-            'bi-mortarboard': 'Educação',
-            'bi-apple': 'Formação',
-            'bi-book': 'Especialização',
-            'bi-people': 'Comunidade',
-            'bi-trophy': 'Prêmios',
-            'bi-lightbulb': 'Certificação',
-            'bi-shield-check': 'Qualificação'
-        };
-        return categories[icon] || 'Projeto';
+    /* O método getCategoryFromIcon foi suprimido (Código Morto) */
+
+    static populateGrid(containerSelector, dataArray) {
+        const container = document.querySelector(containerSelector);
+        if (!container) return;
+
+        container.innerHTML = '';
+        /* Substituição da classe '.row' pela classe unificada de CSS Grid */
+        container.className = 'grid-container'; 
+        
+        dataArray.forEach(item => {
+            container.insertAdjacentHTML('beforeend', this.createCard(item));
+        });
     }
 
     static populateEducation(data) {
-        const container = document.querySelector(CONFIG.SELECTORS.EDUCATION_CONTAINER);
-        if (!container) return;
-
-        container.innerHTML = '';
-        container.className = 'card-grid education-grid';
-        data.education.forEach(item => {
-            container.insertAdjacentHTML('beforeend', this.createCard(item, 'education'));
-        });
+        this.populateGrid(CONFIG.SELECTORS.EDUCATION_CONTAINER, data.education);
     }
 
     static populateProjects(data) {
-        const container = document.querySelector(CONFIG.SELECTORS.PROJECTS_CONTAINER);
-        if (!container) return;
-
-        container.innerHTML = '';
-        container.className = 'card-grid projects-grid';
-        data.projects.forEach(item => {
-            container.insertAdjacentHTML('beforeend', this.createCard(item, 'projects'));
-        });
+        this.populateGrid(CONFIG.SELECTORS.PROJECTS_CONTAINER, data.projects);
     }
 
     static populateCourses(data) {
-        const container = document.querySelector(CONFIG.SELECTORS.COURSES_CONTAINER);
-        if (!container) return;
-
-        container.innerHTML = '';
-        container.className = 'card-grid courses-grid';
-        data.courses.forEach(item => {
-            container.insertAdjacentHTML('beforeend', this.createCard(item, 'courses'));
-        });
+        this.populateGrid(CONFIG.SELECTORS.COURSES_CONTAINER, data.courses);
     }
 
     static populateTestimonials(data) {
@@ -117,11 +94,14 @@ class UIManager {
         if (!container) return;
 
         container.innerHTML = '';
+        container.className = 'testimonials-container';
+        
         data.testimonials.forEach(item => {
+            /* Remoção das classes do Bootstrap. Uso de tags semânticas puras. */
             const quote = `
-                <blockquote class="blockquote">
+                <blockquote class="testimonial-quote">
                     <p>"${item.text}"</p>
-                    <footer class="blockquote-footer">${item.author} <cite title="Source Title">${item.source}</cite></footer>
+                    <footer>&mdash; ${item.author}, <cite>${item.source}</cite></footer>
                 </blockquote>
             `;
             container.insertAdjacentHTML('beforeend', quote);
@@ -132,17 +112,17 @@ class UIManager {
         const footer = document.querySelector(CONFIG.SELECTORS.FOOTER);
         if (!footer) return;
 
-        const emailPrefix = lang === 'en' ? 'Send me an email:' : 'Me mande um email:';
+        const emailPrefix = lang === 'en' ? 'Contact:' : 'Contato:';
         footer.innerHTML = `
             <div class="footer-content">
-                <div class="footer-section">
-                    <p class="footer-email">${emailPrefix} <a href="mailto:${data.contact.email}" class="footer-link email-link">${data.contact.email}</a></p>
-                </div>
-                <div class="footer-section">
-                    <div class="footer-links">
-                        <a href="${data.contact.linkedin}" class="footer-link social-link"><i class="bi bi-linkedin"></i> LinkedIn</a>
-                        <a href="${data.contact.medium}" class="footer-link social-link"><i class="bi bi-medium"></i> Medium</a>
-                    </div>
+                <p>${emailPrefix} <a href="mailto:${data.contact.email}">${data.contact.email}</a></p>
+                <div class="footer-links">
+                    <a href="${data.contact.linkedin}" target="_blank" rel="noopener">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="${data.contact.medium}" target="_blank" rel="noopener">
+                        <i class="bi bi-medium"></i> Medium
+                    </a>
                 </div>
             </div>
         `;
@@ -158,14 +138,14 @@ class UIManager {
             } else {
                 navbar.classList.remove(CONFIG.CLASSES.STICKY);
             }
-        }, 16); // ~60fps
+        }, 16);
 
         window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     static initBackToTop() {
         const backToTopBtn = document.createElement('button');
-        backToTopBtn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+        backToTopBtn.innerHTML = '↑'; /* Substituição de dependência externa de ícone (Bootstrap Icons) por caractere tipográfico */
         backToTopBtn.className = CONFIG.CLASSES.BACK_TO_TOP;
         backToTopBtn.setAttribute('aria-label', 'Voltar ao topo');
         document.body.appendChild(backToTopBtn);
@@ -175,14 +155,29 @@ class UIManager {
         };
 
         const handleScroll = Utils.throttle(() => {
-            if (window.scrollY > CONFIG.THRESHOLDS.BACK_TO_TOP_SCROLL) {
-                backToTopBtn.style.display = 'block';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
+            backToTopBtn.style.display = window.scrollY > CONFIG.THRESHOLDS.BACK_TO_TOP_SCROLL ? 'flex' : 'none';
         }, 16);
 
         backToTopBtn.addEventListener('click', handleClick);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    static initStickyNavbar() {
+        const navbar = document.querySelector(CONFIG.SELECTORS.NAVBAR);
+        const body = document.body;
+        if (!navbar) return;
+
+        const handleScroll = Utils.throttle(() => {
+            // Gatilho em 100px para garantir que a transição seja clara
+            if (window.scrollY > 100) { 
+                navbar.classList.add('sticky');
+                body.classList.add('navbar-is-sticky');
+            } else {
+                navbar.classList.remove('sticky');
+                body.classList.remove('navbar-is-sticky');
+            }
+        }, 16);
+
         window.addEventListener('scroll', handleScroll, { passive: true });
     }
 }
