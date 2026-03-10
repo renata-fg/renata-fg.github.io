@@ -1,83 +1,43 @@
-// Controller: Carrega dados e popula a view
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('models/profile.json')
-        .then(response => response.json())
-        .then(data => {
-            // Hero
-            document.querySelector('.hero h1').textContent = data.name;
-            document.querySelector('.hero p').textContent = data.title;
+// Main Application Controller
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Detect language and update document
+        const lang = LanguageDetector.detect();
+        LanguageDetector.updateDocumentLanguage(lang);
 
-            // About
-            document.querySelector('#about p').textContent = data.about;
+        // Load localization data
+        const localization = await DataManager.loadLocalization();
+        const texts = localization[lang];
 
-            // Education
-            const educationContainer = document.querySelector('#education .row');
-            data.education.forEach(item => {
-                const card = `
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                            <div class="card-body">
-                                <h5>${item.title}</h5>
-                                <p>${item.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                educationContainer.insertAdjacentHTML('beforeend', card);
-            });
+        // Update UI with localization
+        UIManager.updateNavigation(texts);
+        UIManager.updateHero(texts);
+        UIManager.updateSections(texts);
 
-            // Projects
-            const projectsContainer = document.querySelector('#projects .row');
-            data.projects.forEach(item => {
-                const card = `
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                            <div class="card-body">
-                                <h5>${item.title}</h5>
-                                <p>${item.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                projectsContainer.insertAdjacentHTML('beforeend', card);
-            });
+        // Load and validate profile data
+        const profileData = await DataManager.loadProfile(lang);
+        DataManager.validateData(profileData);
 
-            // Testimonials
-            const testimonialsContainer = document.querySelector('#testimonials');
-            data.testimonials.forEach(item => {
-                const quote = `
-                    <blockquote class="blockquote">
-                        <p>"${item.text}"</p>
-                        <footer class="blockquote-footer">${item.author} <cite title="Source Title">${item.source}</cite></footer>
-                    </blockquote>
-                `;
-                testimonialsContainer.insertAdjacentHTML('beforeend', quote);
-            });
+        // Populate all sections
+        UIManager.populateHero(profileData);
+        UIManager.populateAbout(profileData);
+        UIManager.populateEducation(profileData);
+        UIManager.populateProjects(profileData);
+        UIManager.populateCourses(profileData);
+        UIManager.populateTestimonials(profileData);
+        UIManager.populateFooter(profileData, lang);
 
-            // Courses
-            const coursesContainer = document.querySelector('#courses .row');
-            data.courses.forEach(item => {
-                const card = `
-                    <div class="col-md-6">
-                        <div class="card">
-                            <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                            <div class="card-body">
-                                <h5>${item.title}</h5>
-                                <p>${item.description}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                coursesContainer.insertAdjacentHTML('beforeend', card);
-            });
+        // Initialize interactive features
+        UIManager.initStickyNavbar();
+        UIManager.initBackToTop();
 
-            // Footer
-            const footer = document.querySelector('footer .container p');
-            footer.innerHTML = `Me mande um email: <a href="mailto:${data.contact.email}">${data.contact.email}</a><br>
-            <a href="${data.contact.linkedin}" class="me-3">LinkedIn</a>
-            <a href="${data.contact.medium}">Medium</a>`;
-        })
-        .catch(error => console.error('Erro ao carregar dados:', error));
+    } catch (error) {
+        console.error('Application initialization failed:', error);
+        // Fallback: mostrar mensagem de erro na tela
+        const heroTitle = document.querySelector(CONFIG.SELECTORS.HERO_TITLE);
+        if (heroTitle) {
+            heroTitle.textContent = 'Erro ao carregar aplicação';
+            heroTitle.style.color = 'red';
+        }
+    }
 });

@@ -6,29 +6,34 @@
     {
       "title": "Graduação",
       "description": "Sou formada em Sistemas e Mídias Digitais na renomada Universidade Federal do Ceará. Esse é um curso que mistura diversas habilidades de computação, design e comunicação, o que encaixa perfeitamente na minha profissão atual.",
-      "image": "assets/images/graduacao.jpg"
+      "image": "assets/images/graduacao.jpg",
+      "icon": "bi-mortarboard"
     },
     {
       "title": "Apple Developer Academy",
       "description": "A Apple Developer Academy é um programa liderado pela Apple em vários lugares no mundo. Por meio desse programa desenvolvi várias competências importantes para o dia a dia como gestora de produtos. Além disso, desenvolvi junto com colegas 5 produtos digitais, um deles quase virou uma startup!",
-      "image": "assets/images/apple_academy.jpg"
+      "image": "assets/images/apple_academy.jpg",
+      "icon": "bi-apple"
     },
     {
       "title": "Mestrado",
       "description": "O mestrado está me ensinando maneiras profissionais de pesquisar. Isso tem sido um enorme diferencial para minha carreira, pois meus discoveries possuem maior profundidade. Em minha dissertação, estou resolvendo problemas em parceria com a empresa que estou trabalhando, sendo esse mais um diferencial da minha atuação.",
-      "image": "assets/images/mestrado.jpg"
+      "image": "assets/images/mestrado.jpg",
+      "icon": "bi-book"
     }
   ],
   "projects": [
     {
       "title": "CocoaHeads",
       "description": "CocoaHeads é um grupo formado por entusiastas e profissionais que se organizam para reunir pessoas com a mesma paixão: desenvolvimento de aplicativos para os dispositivos Apple. Participei como palestrante e organizadora da comunidade por quatro anos (entre set de 2017 - dez de 2021).",
-      "image": "assets/images/cocoaheads.jpg"
+      "image": "assets/images/cocoaheads.jpg",
+      "icon": "bi-people"
     },
     {
       "title": "WWDC 17/19/20/21",
       "description": "Participei e ganhei quatro vezes de um concurso promovido pela Apple para a participação do seu evento anual de desenvolvedores, em San José, Califórnia. Apenas 350 estudantes do mundo inteiro são escolhidos e cada um recebe como prêmio o ingresso do evento com participação VIP.",
-      "image": "assets/images/wwdc.jpg"
+      "image": "assets/images/wwdc.jpg",
+      "icon": "bi-trophy"
     }
   ],
   "testimonials": [
@@ -47,12 +52,14 @@
     {
       "title": "TERA - Product Leadership",
       "description": "Curso focado em liderança de produtos.",
-      "image": "assets/images/tera.jpg"
+      "image": "assets/images/tera.jpg",
+      "icon": "bi-lightbulb"
     },
     {
       "title": "SAFe Product Owner/Product Manager",
       "description": "Certificação em SAFe para Product Owners e Managers.",
-      "image": "assets/images/safe.jpg"
+      "image": "assets/images/safe.jpg",
+      "icon": "bi-shield-check"
     }
   ],
   "contact": {
