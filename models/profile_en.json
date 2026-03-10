@@ -1,0 +1,70 @@
+{
+  "name": "Renata Faria",
+  "title": "Product Manager",
+  "about": "Hi! My name is Renata, I've been a product manager since 2020, working with Web and Mobile products. Today I'm part of the anti-fraud products team at Serasa Experian. Previously, I worked on internal products for national and international clients in the Apple project (AID - Apple Innovative Development), where I was one of the main responsible for starting the team's agile process. Before that, I worked on an internal product in iFood's logistics, which was my first experience with products.",
+  "education": [
+    {
+      "title": "Graduation",
+      "description": "I graduated in Digital Systems and Media from the renowned Federal University of Ceará. This is a course that mixes various skills in computing, design, and communication, which fits perfectly with my current profession.",
+      "image": "assets/images/graduacao.jpg",
+      "icon": "bi-mortarboard"
+    },
+    {
+      "title": "Apple Developer Academy",
+      "description": "The Apple Developer Academy is a program led by Apple in various places around the world. Through this program, I developed several important competencies for my daily life as a product manager. In addition, I developed 5 digital products with colleagues, one of which almost became a startup!",
+      "image": "assets/images/apple_academy.jpg",
+      "icon": "bi-apple"
+    },
+    {
+      "title": "Masters",
+      "description": "The master's is teaching me professional ways to research. This has been a huge differential for my career, as my discoveries have greater depth. In my dissertation, I am solving problems in partnership with the company I am working for, which is another differential in my performance.",
+      "image": "assets/images/mestrado.jpg",
+      "icon": "bi-book"
+    }
+  ],
+  "projects": [
+    {
+      "title": "CocoaHeads",
+      "description": "CocoaHeads is a group formed by enthusiasts and professionals who organize to bring together people with the same passion: developing applications for Apple devices. I participated as a speaker and organizer of the community for four years (between Sep 2017 - Dec 2021).",
+      "image": "assets/images/cocoaheads.jpg",
+      "icon": "bi-people"
+    },
+    {
+      "title": "WWDC 17/19/20/21",
+      "description": "I participated and won four times in a contest promoted by Apple for participation in its annual developer event, in San José, California. Only 350 students from around the world are selected and each receives the event ticket with VIP participation as a prize.",
+      "image": "assets/images/wwdc.jpg",
+      "icon": "bi-trophy"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "I worked with Renata on the AID in some projects, a professional out of the curve, a lot of knowledge and experiences, very focused on problem solving and with knowledge in various areas, as P.O always works with dynamism and responsibility to achieve her goals.",
+      "author": "Elton Pontes",
+      "source": "Worked with me on the AID project"
+    },
+    {
+      "text": "Renata is a fantastic person to work with, and she's not just a multi-skilled and insightful colleague! Very good person. Great employee with very strong problem-solving skills. Renata is an asset to any company.",
+      "author": "Oldřich Matůšek",
+      "source": "Was my boss during my internship at Oktium"
+    }
+  ],
+  "courses": [
+    {
+      "title": "TERA - Product Leadership",
+      "description": "Course focused on product leadership.",
+      "image": "assets/images/tera.jpg",
+      "icon": "bi-lightbulb"
+    },
+    {
+      "title": "SAFe Product Owner/Product Manager",
+      "description": "Certification in SAFe for Product Owners and Managers.",
+      "image": "assets/images/safe.jpg",
+      "icon": "bi-shield-check"
+    }
+  ],
+  "contact": {
+    "email": "renata.faria.gomes@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/renatafariagomes/",
+    "medium": "https://medium.com/@renatafg"
+  }
+}

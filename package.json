@@ -1,0 +1,24 @@
+{
+  "name": "renata-faria-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio profissional bilíngue de Renata Faria",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "build": "echo 'Build process would go here'",
+    "lint": "echo 'Linting would go here'",
+    "test": "echo 'Tests would go here'"
+  },
+  "keywords": ["portfolio", "web-development", "product-manager"],
+  "author": "Renata Faria",
+  "license": "MIT",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
+}
