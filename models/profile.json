@@ -1,0 +1,63 @@
+{
+  "name": "Renata Faria",
+  "title": "Gerente de Produtos",
+  "about": "Oi! Meu nome é Renata, sou gerente de produtos desde 2020, atuando com produtos Web e Mobile. Hoje faço parte do time de produtos voltados para Anti-fraude na Serasa Experian. Anteriormente, trabalhei com produtos internos para clientes nacionais e internacionais no projeto da Apple (AID - Apple Innovative Development), onde fui uma das principais responsáveis por iniciar o processo ágil do time. Antes disso, trabalhei em um produto interno na logística do iFood, sendo essa minha primeira experiência com produtos.",
+  "education": [
+    {
+      "title": "Graduação",
+      "description": "Sou formada em Sistemas e Mídias Digitais na renomada Universidade Federal do Ceará. Esse é um curso que mistura diversas habilidades de computação, design e comunicação, o que encaixa perfeitamente na minha profissão atual.",
+      "image": "assets/images/graduacao.jpg"
+    },
+    {
+      "title": "Apple Developer Academy",
+      "description": "A Apple Developer Academy é um programa liderado pela Apple em vários lugares no mundo. Por meio desse programa desenvolvi várias competências importantes para o dia a dia como gestora de produtos. Além disso, desenvolvi junto com colegas 5 produtos digitais, um deles quase virou uma startup!",
+      "image": "assets/images/apple_academy.jpg"
+    },
+    {
+      "title": "Mestrado",
+      "description": "O mestrado está me ensinando maneiras profissionais de pesquisar. Isso tem sido um enorme diferencial para minha carreira, pois meus discoveries possuem maior profundidade. Em minha dissertação, estou resolvendo problemas em parceria com a empresa que estou trabalhando, sendo esse mais um diferencial da minha atuação.",
+      "image": "assets/images/mestrado.jpg"
+    }
+  ],
+  "projects": [
+    {
+      "title": "CocoaHeads",
+      "description": "CocoaHeads é um grupo formado por entusiastas e profissionais que se organizam para reunir pessoas com a mesma paixão: desenvolvimento de aplicativos para os dispositivos Apple. Participei como palestrante e organizadora da comunidade por quatro anos (entre set de 2017 - dez de 2021).",
+      "image": "assets/images/cocoaheads.jpg"
+    },
+    {
+      "title": "WWDC 17/19/20/21",
+      "description": "Participei e ganhei quatro vezes de um concurso promovido pela Apple para a participação do seu evento anual de desenvolvedores, em San José, Califórnia. Apenas 350 estudantes do mundo inteiro são escolhidos e cada um recebe como prêmio o ingresso do evento com participação VIP.",
+      "image": "assets/images/wwdc.jpg"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Trabalhei com Renata no AID junto em alguns projetos, uma profissional fora da curva, muito conhecimento e experiências, muito focada na resolução de problemas e com um conhecimento em diversas áreas, como P.O sempre trabalha com dinamismo e responsabilidade para alcançar as suas metas.",
+      "author": "Elton Pontes",
+      "source": "Trabalhou comigo no projeto AID"
+    },
+    {
+      "text": "Renata é uma pessoa fantástica para se trabalhar, e não é apenas uma colega multi-habilidosa e perspicaz! Pessoa muito boa. Ótima funcionária com habilidades muito fortes de resolução de problemas. Renata é um trunfo para qualquer empresa.",
+      "author": "Oldřich Matůšek",
+      "source": "Foi meu chefe durante meu estágio na Oktium"
+    }
+  ],
+  "courses": [
+    {
+      "title": "TERA - Product Leadership",
+      "description": "Curso focado em liderança de produtos.",
+      "image": "assets/images/tera.jpg"
+    },
+    {
+      "title": "SAFe Product Owner/Product Manager",
+      "description": "Certificação em SAFe para Product Owners e Managers.",
+      "image": "assets/images/safe.jpg"
+    }
+  ],
+  "contact": {
+    "email": "renata.faria.gomes@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/renatafariagomes/",
+    "medium": "https://medium.com/@renatafg"
+  }
+}
