@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesquisa | Landing Page</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Pesquisa em Sistemas de Computação</h1>
+            <p>
+                Análise técnica e empírica conduzida no âmbito do Mestrado em Ciência da Computação (UFPE),
+                focada na interseção entre gestão de produtos e sistemas digitais.
+            </p>
+            <a class="btn" id="open-research-btn" href="javascript:void(0)">Contribuir com a Pesquisa</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="artigos" class="section">
+            <div class="container">
+                <h2>Artigos publicados</h2>
+                <ul class="artigos-lista">
+                    <li><a href="https://scholar.google.com.br/citations?view_op=view_citation&hl=pt-BR&user=XVmxTFIAAAAJ&citation_for_view=XVmxTFIAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener noreferrer">Assessing the experience of immersion in electronic games</a></li>
+                    <li><a href="https://scholar.google.com.br/citations?view_op=view_citation&hl=pt-BR&user=XVmxTFIAAAAJ&citation_for_view=XVmxTFIAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener noreferrer">Gamification in remote teaching of SE courses: experience report</a></li>
+                    <li><a href="https://scholar.google.com.br/citations?view_op=view_citation&hl=pt-BR&user=XVmxTFIAAAAJ&citation_for_view=XVmxTFIAAAAJ:d1gkVwhDpl0C" target="_blank" rel="noopener noreferrer">Synesthesia: A study on immersive features of electronic games</a></li>
+                    <li><a href="https://scholar.google.com.br/citations?view_op=view_citation&hl=pt-BR&user=XVmxTFIAAAAJ&citation_for_view=XVmxTFIAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener noreferrer">GAMUT: GAMe-based learning approach for teaching Unit Testing</a></li>
+                    <li><a href="https://scholar.google.com.br/citations?view_op=view_citation&hl=pt-BR&user=XVmxTFIAAAAJ&citation_for_view=XVmxTFIAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener noreferrer">Reprojecting a Fitness App Regarding Retention and Usability Using Nielsen's Heuristics</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <section class="modal-content">
+            <button class="close-modal" id="btn-close">&times;</button>
+            <h2>Formulário de Pesquisa</h2>
+            <p class="section-text">Sua contribuição é fundamental para este estudo acadêmico.</p>
+
+            <form id="pesquisa-form" class="form">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" required />
+
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" required />
+
+                <label for="resposta">Sua resposta</label>
+                <textarea id="resposta" name="resposta" rows="5" required></textarea>
+
+                <button type="submit" class="btn">Enviar resposta</button>
+            </form>
+            <p id="form-msg" class="form-msg" aria-live="polite"></p>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
